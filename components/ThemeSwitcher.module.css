@@ -1,0 +1,73 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px;
+  border-radius: 50px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--foreground-muted);
+}
+
+.buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--foreground-muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  color: var(--foreground);
+  background: rgba(var(--primary-rgb), 0.05);
+}
+
+.button.active {
+  color: var(--foreground);
+  background: rgba(var(--primary-rgb), 0.1);
+  border-color: rgba(var(--primary-rgb), 0.25);
+  box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.1);
+}
+
+.colorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.name {
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .label {
+    display: none;
+  }
+  
+  .name {
+    display: none;
+  }
+  
+  .button {
+    padding: 8px;
+  }
+}

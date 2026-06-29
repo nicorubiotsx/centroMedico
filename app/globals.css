@@ -1,49 +1,137 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* --- TEMAS --- */
+
+/* Tema 3: Clínica Vanguardista (Oscuro y Eléctrico) */
+.theme-vanguardista {
+  --background: #0f111a;
+  --background-alt: #161925;
+  --foreground: #f3f4f6;
+  --foreground-muted: #9ca3af;
+  --primary: #00f2fe;
+  --primary-hover: #00c6d7;
+  --primary-rgb: 0, 242, 254;
+  --accent: #0066ff;
+  --card-bg: rgba(22, 25, 37, 0.7);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  --navbar-bg: rgba(15, 17, 26, 0.85);
+  --success: #10b981;
+  --glass-blur: blur(16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Tema 1: Confianza (Azul Médico Clásico) */
+.theme-confianza {
+  --background: #f8fafc;
+  --background-alt: #f1f5f9;
+  --foreground: #0f172a;
+  --foreground-muted: #64748b;
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-rgb: 2, 132, 199;
+  --accent: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(2, 132, 199, 0.1);
+  --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+  --navbar-bg: rgba(248, 250, 252, 0.9);
+  --success: #0d9488;
+  --glass-blur: blur(12px);
 }
 
-html {
-  height: 100%;
+/* Tema 2: Sanación (Verde Salud/Teal) */
+.theme-sanacion {
+  --background: #f4faf8;
+  --background-alt: #e6f4f0;
+  --foreground: #111827;
+  --foreground-muted: #4b5563;
+  --primary: #0d9488;
+  --primary-hover: #0f766e;
+  --primary-rgb: 13, 148, 136;
+  --accent: #111827;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(13, 148, 136, 0.1);
+  --card-shadow: 0 10px 30px rgba(13, 148, 136, 0.04);
+  --navbar-bg: rgba(244, 250, 248, 0.9);
+  --success: #059669;
+  --glass-blur: blur(12px);
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+/* --- ESTILOS GENERALES --- */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Outfit', sans-serif;
+  color: var(--foreground);
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
-  color: inherit;
   text-decoration: none;
+  color: inherit;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+button, input, select {
+  font-family: inherit;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--foreground-muted);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* --- EFECTOS PREMIUM --- */
+.glass-effect {
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--foreground));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hover-glow {
+  position: relative;
+  overflow: hidden;
+}
+.hover-glow::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.15) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.hover-glow:hover::after {
+  opacity: 1;
 }
