@@ -1,6 +1,7 @@
 import { Outfit } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeContext';
+import { Analytics } from "@vercel/analytics/next";
 import Navbar from '@/components/Navbar';
 
 const outfit = Outfit({
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
             {children}
           </main>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
