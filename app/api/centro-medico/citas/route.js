@@ -40,6 +40,9 @@ export async function POST(request) {
 
     // Enviar correo de confirmación de forma asíncrona (no bloqueante)
     try {
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+      const urlCancelacion = `${baseUrl}/cancelar?id=${citaId}&codigo=${codigoConfirmacion}`;
+      
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -68,9 +71,13 @@ export async function POST(request) {
               </div>
               
               <p style="font-size: 14px; color: #666; margin-top: 30px;">
-                Por favor, preséntate 15 minutos antes de tu cita en recepción.<br>
-                Si necesitas cancelar o reagendar, por favor contáctanos con al menos 24 horas de anticipación.
+                Por favor, preséntate 15 minutos antes de tu cita en recepción.
               </p>
+              
+              <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 15px;">¿No puedes asistir a tu cita?</p>
+                <a href="${urlCancelacion}" style="display: inline-block; padding: 10px 20px; background-color: #ef4444; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 14px;">Cancelar Reserva</a>
+              </div>
             </div>
             <div style="background-color: #f1f5f9; padding: 15px; text-align: center; font-size: 12px; color: #64748b;">
               © ${new Date().getFullYear()} Centro Médico. Todos los derechos reservados.
