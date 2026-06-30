@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState('vanguardista'); // 'vanguardista' (default), 'confianza', 'sanacion'
+  const [theme, setTheme] = useState('vanguardista'); // 'vanguardista' (default), 'confianza'
 
   useEffect(() => {
     // Cargar el tema inicial desde localStorage si existe
@@ -18,11 +18,11 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     // Quitar todas las clases de tema del html
     const htmlEl = document.documentElement;
-    htmlEl.classList.remove('theme-vanguardista', 'theme-confianza', 'theme-sanacion');
-    
+    htmlEl.classList.remove('theme-vanguardista', 'theme-confianza');
+
     // Añadir el nuevo tema
     htmlEl.classList.add(`theme-${theme}`);
-    
+
     // Guardar en localStorage
     localStorage.setItem('centro-medico-theme', theme);
   }, [theme]);

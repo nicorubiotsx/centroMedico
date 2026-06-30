@@ -38,23 +38,6 @@
   --glass-blur: blur(12px);
 }
 
-/* Tema 2: Sanación (Verde Salud/Teal) */
-.theme-sanacion {
-  --background: #f4faf8;
-  --background-alt: #e6f4f0;
-  --foreground: #111827;
-  --foreground-muted: #4b5563;
-  --primary: #0d9488;
-  --primary-hover: #0f766e;
-  --primary-rgb: 13, 148, 136;
-  --accent: #111827;
-  --card-bg: rgba(255, 255, 255, 0.9);
-  --card-border: rgba(13, 148, 136, 0.1);
-  --card-shadow: 0 10px 30px rgba(13, 148, 136, 0.04);
-  --navbar-bg: rgba(244, 250, 248, 0.9);
-  --success: #059669;
-  --glass-blur: blur(12px);
-}
 
 /* --- ESTILOS GENERALES --- */
 * {

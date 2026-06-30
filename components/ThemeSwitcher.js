@@ -9,8 +9,7 @@ export default function ThemeSwitcher() {
 
   const themes = [
     { id: 'vanguardista', name: 'Vanguardista', color: '#00f2fe' },
-    { id: 'confianza', name: 'Confianza', color: '#0284c7' },
-    { id: 'sanacion', name: 'Sanación', color: '#0d9488' },
+    { id: 'confianza', name: 'Confianza', color: '#0284c7' }
   ];
 
   return (
@@ -24,8 +23,8 @@ export default function ThemeSwitcher() {
             className={`${styles.button} ${theme === t.id ? styles.active : ''}`}
             title={`Cambiar a tema ${t.name}`}
           >
-            <span 
-              className={styles.colorDot} 
+            <span
+              className={styles.colorDot}
               style={{ backgroundColor: t.color }}
             />
             <span className={styles.name}>{t.name}</span>
