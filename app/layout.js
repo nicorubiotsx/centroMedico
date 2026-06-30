@@ -10,9 +10,9 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: 'Centro Médico San Francisco - Reserva de Horas',
+  title: 'Centro Médico - Reserva de Horas',
   description: 'Gestiona tus citas médicas de forma rápida, segura y moderna con nuestro sistema integrado de agendamiento.',
-  keywords: 'centro medico, reserva de horas, citas medicas, medicos, salud, san-francisco',
+  keywords: 'centro medico, reserva de horas, citas medicas, medicos, salud',
 };
 
 export default function RootLayout({ children }) {

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-// Datos estáticos simulando la base de datos de San Francisco
+// Datos estáticos simulando la base de datos
 const SUCURSALES = [
   { id: 1, nombre: 'Sucursal Providencia', direccion: 'Av. Providencia 1240, Oficina 402' },
   { id: 2, nombre: 'Sucursal Las Condes', direccion: 'Av. Apoquindo 4500, Piso 10' }

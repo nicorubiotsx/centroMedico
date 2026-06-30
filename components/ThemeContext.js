@@ -9,7 +9,7 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     // Cargar el tema inicial desde localStorage si existe
-    const savedTheme = localStorage.getItem('san-francisco-theme');
+    const savedTheme = localStorage.getItem('centro-medico-theme');
     if (savedTheme) {
       setTheme(savedTheme);
     }
@@ -24,7 +24,7 @@ export function ThemeProvider({ children }) {
     htmlEl.classList.add(`theme-${theme}`);
     
     // Guardar en localStorage
-    localStorage.setItem('san-francisco-theme', theme);
+    localStorage.setItem('centro-medico-theme', theme);
   }, [theme]);
 
   const toggleTheme = (newTheme) => {

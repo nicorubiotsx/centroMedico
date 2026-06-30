@@ -54,7 +54,7 @@ export default function Home() {
             Tu salud en manos <span className={styles.accentText}>expertas</span>, a un click de distancia.
           </h1>
           <p className={styles.subtitle}>
-            Bienvenido al portal de autogestión de Centro Médico San Francisco. Consulta agendas en tiempo real y reserva tu cita médica de manera rápida, transparente y segura.
+            Bienvenido al portal de autogestión de nuestro Centro Médico. Consulta agendas en tiempo real y reserva tu cita médica de manera rápida, transparente y segura.
           </p>
           <div className={styles.ctas}>
             <Link href="/reserva" className={styles.primaryCta}>
@@ -105,7 +105,7 @@ export default function Home() {
       {/* Features Section */}
       <section id="especialidades" className={styles.features}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>¿Por qué elegir San Francisco?</h2>
+          <h2 className={styles.sectionTitle}>¿Por qué elegirnos?</h2>
           <p className={styles.sectionSubtitle}>
             Diseñamos una experiencia ágil pensada en el cuidado y la comodidad de cada uno de nuestros pacientes.
           </p>

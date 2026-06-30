@@ -1,6 +1,6 @@
-# Centro Médico San Francisco - Portal de Reservas 🏥
+# Centro Médico - Portal de Reservas 🏥
 
-Aplicación web moderna y de alto rendimiento para el agendamiento de citas médicas del **Centro Médico San Francisco**. Diseñada con una arquitectura Backend for Frontend (BFF) para integrarse de forma segura con la API de gestión clínica de **Medilink 2 (Healthatom)**.
+Aplicación web moderna y de alto rendimiento para el agendamiento de citas médicas del **Centro Médico**. Diseñada con una arquitectura Backend for Frontend (BFF) para integrarse de forma segura con la API de gestión clínica de **Medilink 2 (Healthatom)**.
 
 ## 🚀 Características Principales
 
@@ -25,14 +25,14 @@ Aplicación web moderna y de alto rendimiento para el agendamiento de citas méd
 El proyecto utiliza un patrón **Backend for Frontend (BFF)**. 
 
 1.  **Frontend (React Client Components):** Maneja la interfaz de usuario, estados y validaciones visuales.
-2.  **Servidor Node (Next.js API Routes):** Actúa como proxy seguro en `/api/san-francisco/*`. Inyecta los headers de autenticación (`Authorization: Token`).
+2.  **Servidor Node (Next.js API Routes):** Actúa como proxy seguro en `/api/centro-medico/*`. Inyecta los headers de autenticación (`Authorization: Token`).
 3.  **API Externa (Medilink 2):** Procesa la creación real de citas, lectura de agendas y validación final de datos.
 
 ## 📂 Estructura del Proyecto
 
 ```text
 ├── app/
-│   ├── api/san-francisco/      # Rutas backend (Proxy hacia Medilink)
+│   ├── api/centro-medico/      # Rutas backend (Proxy hacia Medilink)
 │   ├── reserva/                # Flujo completo de reserva (UI)
 │   ├── globals.css             # Variables CSS globales y sistema de temas
 │   ├── layout.js               # Layout raíz (Navbar, ThemeProvider, SEO)

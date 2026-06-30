@@ -49,7 +49,7 @@ export async function POST(request) {
       });
 
       const mailOptions = {
-        from: `"Centro Médico San Francisco" <${process.env.GMAIL_USER}>`,
+        from: `"Centro Médico" <${process.env.GMAIL_USER}>`,
         to: email,
         subject: `Confirmación de Cita Médica - Código ${codigoConfirmacion}`,
         html: `
@@ -59,7 +59,7 @@ export async function POST(request) {
             </div>
             <div style="padding: 30px; background-color: #ffffff;">
               <p style="font-size: 16px; color: #333;">Hola <strong>${nombre}</strong>,</p>
-              <p style="font-size: 16px; color: #333;">Tu cita en el Centro Médico San Francisco ha sido confirmada exitosamente.</p>
+              <p style="font-size: 16px; color: #333;">Tu cita en el Centro Médico ha sido confirmada exitosamente.</p>
               
               <div style="background-color: #f8fafc; border-left: 4px solid #0284c7; padding: 15px; margin: 25px 0;">
                 <p style="margin: 5px 0; color: #333;"><strong>Código de Reserva:</strong> <span style="color: #0284c7; font-size: 18px;">${codigoConfirmacion}</span></p>
@@ -73,7 +73,7 @@ export async function POST(request) {
               </p>
             </div>
             <div style="background-color: #f1f5f9; padding: 15px; text-align: center; font-size: 12px; color: #64748b;">
-              © ${new Date().getFullYear()} Centro Médico San Francisco. Todos los derechos reservados.
+              © ${new Date().getFullYear()} Centro Médico. Todos los derechos reservados.
             </div>
           </div>
         `
@@ -89,7 +89,7 @@ export async function POST(request) {
 
     return NextResponse.json({
       success: true,
-      mensaje: 'Cita reservada con éxito en San Francisco',
+      mensaje: 'Cita reservada con éxito',
       cita: {
         id: citaId,
         codigoConfirmacion,

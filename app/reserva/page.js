@@ -38,7 +38,7 @@ export default function ReservaPage() {
   useEffect(() => {
     async function loadInitialData() {
       try {
-        const res = await fetch('/api/san-francisco/agendas');
+        const res = await fetch('/api/centro-medico/agendas');
         if (!res.ok) throw new Error('Error al cargar datos iniciales');
         const data = await res.json();
         setSucursales(data.sucursales);
@@ -70,7 +70,7 @@ export default function ReservaPage() {
         setAgendaError('');
         try {
           const res = await fetch(
-            `/api/san-francisco/agendas?sucursalId=${selectedSucursal.id}&profesionalId=${selectedProfesional.id}`
+            `/api/centro-medico/agendas?sucursalId=${selectedSucursal.id}&profesionalId=${selectedProfesional.id}`
           );
           if (!res.ok) throw new Error('No se pudo cargar la agenda del profesional');
           const data = await res.json();
@@ -134,7 +134,7 @@ export default function ReservaPage() {
 
     setLoadingSubmit(true);
     try {
-      const res = await fetch('/api/san-francisco/citas', {
+      const res = await fetch('/api/centro-medico/citas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -521,7 +521,7 @@ export default function ReservaPage() {
                   className={styles.submitBtn}
                   disabled={loadingSubmit}
                 >
-                  {loadingSubmit ? 'Confirmando con San Francisco...' : 'Confirmar Reserva de Cita'}
+                  {loadingSubmit ? 'Confirmando...' : 'Confirmar Reserva de Cita'}
                 </button>
               </form>
             </div>
@@ -537,7 +537,7 @@ export default function ReservaPage() {
               </svg>
             </div>
             <h2>¡Cita Confirmada con Éxito!</h2>
-            <p className={styles.successIntro}>Su cita ha sido registrada exitosamente en el sistema de gestión clínica San Francisco.</p>
+            <p className={styles.successIntro}>Su cita ha sido registrada exitosamente en el sistema de gestión clínica.</p>
             
             <div className={styles.ticket}>
               <div className={styles.ticketRow}>
