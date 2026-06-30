@@ -38,6 +38,23 @@ export default function Navbar() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [menuOpen]);
 
+  // Close menu on click outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        menuOpen &&
+        drawerRef.current &&
+        !drawerRef.current.contains(e.target) &&
+        hamburgerRef.current &&
+        !hamburgerRef.current.contains(e.target)
+      ) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [menuOpen]);
+
   // Lock body scroll when menu is open
   useEffect(() => {
     if (menuOpen) {
