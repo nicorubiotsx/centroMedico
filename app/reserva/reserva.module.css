@@ -813,3 +813,62 @@
   40%, 80% { transform: translateX(6px); }
 }
 
+
+/* --- FILTROS DE ESPECIALIDAD PREMIUM --- */
+.filtersWrapper {
+  margin-bottom: 24px;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+  padding: 0 4px;
+}
+
+.filtersScroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 8px 4px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.filtersScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.pillBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 9999px;
+  color: var(--foreground-muted);
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  scroll-snap-align: start;
+}
+
+.pillBtn:hover {
+  background: rgba(var(--primary-rgb), 0.05);
+  transform: translateY(-2px);
+  border-color: rgba(var(--primary-rgb), 0.3);
+}
+
+.pillActive {
+  background: var(--primary) !important;
+  color: var(--background) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 6px 16px rgba(var(--primary-rgb), 0.3);
+  transform: translateY(-2px);
+}
+
+.pillIcon {
+  font-size: 16px;
+}

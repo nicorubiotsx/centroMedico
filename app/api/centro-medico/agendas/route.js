@@ -9,7 +9,11 @@ const SUCURSALES = [
 const PROFESIONALES = [
   { id: 101, nombre: 'Dr. Alejandro Silva', especialidad: 'Cardiología', sucursalId: 1, rating: 4.9, imagen: '/images/doctor-silva.jpg' },
   { id: 102, nombre: 'Dra. Beatriz Fuentes', especialidad: 'Pediatría', sucursalId: 2, rating: 4.8, imagen: '/images/doctor-fuentes.jpg' },
-  { id: 103, nombre: 'Dr. Carlos Mendoza', especialidad: 'Medicina General', sucursalId: 1, rating: 4.7, imagen: '/images/doctor-mendoza.jpg' }
+  { id: 103, nombre: 'Dr. Carlos Mendoza', especialidad: 'Medicina General', sucursalId: 1, rating: 4.7, imagen: '/images/doctor-mendoza.jpg' },
+  { id: 104, nombre: 'Dr. Roberto Díaz', especialidad: 'Traumatología', sucursalId: 2, rating: 4.9, imagen: '/images/doctor-diaz.jpg' },
+  { id: 105, nombre: 'Dra. Sofía Vergara', especialidad: 'Dermatología', sucursalId: 1, rating: 5.0, imagen: '/images/doctor-vergara.jpg' },
+  { id: 106, nombre: 'Dra. Camila Soto', especialidad: 'Ginecología', sucursalId: 2, rating: 4.8, imagen: '/images/doctor-soto.jpg' },
+  { id: 107, nombre: 'Dr. Martín López', especialidad: 'Odontología', sucursalId: 1, rating: 4.6, imagen: '/images/doctor-lopez.jpg' }
 ];
 
 export async function GET(request) {

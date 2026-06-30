@@ -50,7 +50,11 @@ export default function ReservaPage() {
         const bios = {
           101: 'Especialista en prevención y tratamiento de patologías cardiovasculares. 12 años de trayectoria en medicina interna.',
           102: 'Dedicada al desarrollo infantil integral y cuidado del adolescente con enfoque cálido, empático y humano.',
-          103: 'Atención primaria familiar, chequeos preventivos generales y manejo integral de enfermedades crónicas.'
+          103: 'Atención primaria familiar, chequeos preventivos generales y manejo integral de enfermedades crónicas.',
+          104: 'Subespecialidad en medicina deportiva y lesiones articulares. Cirugía mínimamente invasiva.',
+          105: 'Diagnóstico precoz de cáncer de piel, tratamientos estéticos y dermatología clínica.',
+          106: 'Control del embarazo, menopausia y patología cervical. Trato cercano y resolutivo.',
+          107: 'Odontología integral, rehabilitación oral y diseño de sonrisa.'
         };
         const enriquecidos = data.profesionales.map(p => ({
           ...p,
@@ -224,20 +228,30 @@ export default function ReservaPage() {
               <p>Elige el médico con el que deseas agendar tu consulta.</p>
             </div>
             
-            {/* Filtro de Especialidades */}
+            {/* Filtro de Especialidades Premium */}
             {profesionales.length > 0 && (
-              <div className={styles.filtersContainer} style={{ marginBottom: '2rem' }}>
-                <span className={styles.filtersLabel}>Especialidad:</span>
-                <div className={styles.filterGroup} style={{ flexWrap: 'wrap' }}>
-                  {['Todas', ...new Set(profesionales.map(p => p.especialidad))].map(esp => (
-                    <button
-                      key={esp}
-                      onClick={() => setSelectedEspecialidad(esp)}
-                      className={`${styles.filterBtn} ${selectedEspecialidad === esp ? styles.filterActive : ''}`}
-                    >
-                      {esp}
-                    </button>
-                  ))}
+              <div className={styles.filtersWrapper}>
+                <div className={styles.filtersScroll}>
+                  {['Todas', ...new Set(profesionales.map(p => p.especialidad))].map(esp => {
+                    const icon = esp === 'Cardiología' ? '❤️' :
+                                 esp === 'Pediatría' ? '🧸' :
+                                 esp === 'Medicina General' ? '🩺' :
+                                 esp === 'Traumatología' ? '🦴' :
+                                 esp === 'Dermatología' ? '✨' :
+                                 esp === 'Ginecología' ? '🌸' :
+                                 esp === 'Odontología' ? '🦷' :
+                                 esp === 'Todas' ? '🏥' : '⚕️';
+                    return (
+                      <button
+                        key={esp}
+                        onClick={() => setSelectedEspecialidad(esp)}
+                        className={`${styles.pillBtn} ${selectedEspecialidad === esp ? styles.pillActive : ''}`}
+                      >
+                        <span className={styles.pillIcon}>{icon}</span>
+                        {esp}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             )}
