@@ -29,8 +29,8 @@ export async function GET(request) {
     const horaActual = hoyDate.getHours();
 
     const profesionalesConDisponibilidad = PROFESIONALES.map(p => {
-      // Disponible hoy si el dia actual está en sus días de trabajo y aún no son las 17:00 (última cita)
-      const disponibleHoy = p.diasTrabajo.includes(diaActual) && horaActual < 17;
+      // Disponible hoy si el dia actual está en sus días de trabajo y aún no son las 23:00 (última cita de prueba)
+      const disponibleHoy = p.diasTrabajo.includes(diaActual) && horaActual < 23;
       return { ...p, disponibleHoy };
     });
 
@@ -51,8 +51,8 @@ export async function GET(request) {
   const agendas = [];
   const hoy = new Date();
 
-  // Lista de horas del día
-  const bloquesHorarios = ['09:00', '09:45', '10:30', '11:15', '12:00', '14:00', '14:45', '15:30', '16:15', '17:00'];
+  // Lista de horas del día (incluimos las 23:00 para pruebas)
+  const bloquesHorarios = ['09:00', '09:45', '10:30', '11:15', '12:00', '14:00', '14:45', '15:30', '16:15', '17:00', '23:00'];
 
   for (let i = 0; i < 5; i++) {
     const fecha = new Date(hoy);
@@ -64,9 +64,16 @@ export async function GET(request) {
     }
 
     const fechaStr = fecha.toISOString().split('T')[0];
+    const hoyStr = hoy.toISOString().split('T')[0];
 
     // Seleccionar aleatoriamente algunos bloques horarios para simular disponibilidad
-    const bloquesDisponibles = bloquesHorarios.filter(() => Math.random() > 0.4);
+    let bloquesDisponibles = bloquesHorarios.filter(() => Math.random() > 0.4);
+
+    // Si es hoy, forzamos siempre agregar las 23:00 para que se pueda testear de noche
+    if (fechaStr === hoyStr && !bloquesDisponibles.includes('23:00')) {
+      bloquesDisponibles.push('23:00');
+      bloquesDisponibles.sort();
+    }
 
     if (bloquesDisponibles.length > 0) {
       agendas.push({
