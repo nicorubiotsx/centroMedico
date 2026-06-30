@@ -22,6 +22,9 @@ export default function ReservaPage() {
   
   // Filtro de horario (all, morning, afternoon)
   const [timeFilter, setTimeFilter] = useState('all');
+  
+  // Filtro de especialidad
+  const [selectedEspecialidad, setSelectedEspecialidad] = useState('Todas');
 
   // Formulario, validaciones e interacciones
   const [rutVal, setRutVal] = useState('');
@@ -174,6 +177,7 @@ export default function ReservaPage() {
     setRutStatus('idle');
     setTelefonoStatus('idle');
     setTimeFilter('all');
+    setSelectedEspecialidad('Todas');
   };
 
   // Filtrado de horas
@@ -220,8 +224,28 @@ export default function ReservaPage() {
               <p>Elige el médico con el que deseas agendar tu consulta.</p>
             </div>
             
+            {/* Filtro de Especialidades */}
+            {profesionales.length > 0 && (
+              <div className={styles.filtersContainer} style={{ marginBottom: '2rem' }}>
+                <span className={styles.filtersLabel}>Especialidad:</span>
+                <div className={styles.filterGroup} style={{ flexWrap: 'wrap' }}>
+                  {['Todas', ...new Set(profesionales.map(p => p.especialidad))].map(esp => (
+                    <button
+                      key={esp}
+                      onClick={() => setSelectedEspecialidad(esp)}
+                      className={`${styles.filterBtn} ${selectedEspecialidad === esp ? styles.filterActive : ''}`}
+                    >
+                      {esp}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+            
             <div className={styles.doctorGrid}>
-              {profesionales.map((prof) => {
+              {profesionales
+                .filter(prof => selectedEspecialidad === 'Todas' || prof.especialidad === selectedEspecialidad)
+                .map((prof) => {
                 const suc = sucursales.find(s => s.id === prof.sucursalId);
                 return (
                   <div key={prof.id} className={`${styles.doctorCard} glass-effect hover-glow`}>
