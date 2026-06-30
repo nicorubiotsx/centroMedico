@@ -7,13 +7,13 @@ const SUCURSALES = [
 ];
 
 const PROFESIONALES = [
-  { id: 101, nombre: 'Dr. Alejandro Silva', especialidad: 'Cardiología', sucursalId: 1, rating: 4.9, imagen: '/images/doctor-silva.jpg' },
-  { id: 102, nombre: 'Dra. Beatriz Fuentes', especialidad: 'Pediatría', sucursalId: 1, rating: 4.8, imagen: '/images/doctor-fuentes.jpg' },
-  { id: 103, nombre: 'Dr. Carlos Mendoza', especialidad: 'Medicina General', sucursalId: 1, rating: 4.7, imagen: '/images/doctor-mendoza.jpg' },
-  { id: 104, nombre: 'Dr. Roberto Díaz', especialidad: 'Traumatología', sucursalId: 1, rating: 4.9, imagen: '/images/doctor-diaz.jpg' },
-  { id: 105, nombre: 'Dra. Sofía Vergara', especialidad: 'Dermatología', sucursalId: 1, rating: 5.0, imagen: '/images/doctor-vergara.jpg' },
-  { id: 106, nombre: 'Dra. Camila Soto', especialidad: 'Ginecología', sucursalId: 1, rating: 4.8, imagen: '/images/doctor-soto.jpg' },
-  { id: 107, nombre: 'Dr. Martín López', especialidad: 'Odontología', sucursalId: 1, rating: 4.6, imagen: '/images/doctor-lopez.jpg' }
+  { id: 101, nombre: 'Dr. Alejandro Silva', especialidad: 'Cardiología', sucursalId: 1, rating: 4.9, imagen: '/images/doctor-silva.jpg', diasTrabajo: [1, 2, 3, 4, 5] },
+  { id: 102, nombre: 'Dra. Beatriz Fuentes', especialidad: 'Pediatría', sucursalId: 2, rating: 4.8, imagen: '/images/doctor-fuentes.jpg', diasTrabajo: [1, 3, 5] },
+  { id: 103, nombre: 'Dr. Carlos Mendoza', especialidad: 'Medicina General', sucursalId: 1, rating: 4.7, imagen: '/images/doctor-mendoza.jpg', diasTrabajo: [2, 4, 5] },
+  { id: 104, nombre: 'Dr. Roberto Díaz', especialidad: 'Traumatología', sucursalId: 2, rating: 4.9, imagen: '/images/doctor-diaz.jpg', diasTrabajo: [1, 2, 3] },
+  { id: 105, nombre: 'Dra. Sofía Vergara', especialidad: 'Dermatología', sucursalId: 1, rating: 5.0, imagen: '/images/doctor-vergara.jpg', diasTrabajo: [3, 4, 5] },
+  { id: 106, nombre: 'Dra. Camila Soto', especialidad: 'Ginecología', sucursalId: 2, rating: 4.8, imagen: '/images/doctor-soto.jpg', diasTrabajo: [1, 2, 4, 5] },
+  { id: 107, nombre: 'Dr. Martín López', especialidad: 'Odontología', sucursalId: 1, rating: 4.6, imagen: '/images/doctor-lopez.jpg', diasTrabajo: [1, 3, 4] }
 ];
 
 export async function GET(request) {
@@ -23,9 +23,20 @@ export async function GET(request) {
 
   // Si solo piden la info básica de sucursales y médicos (para los selectores)
   if (!sucursalId && !profesionalId) {
+    const hoyDate = new Date();
+    // Ajustar a zona horaria local de Chile para evitar saltos de día por UTC
+    const diaActual = hoyDate.getDay(); 
+    const horaActual = hoyDate.getHours();
+
+    const profesionalesConDisponibilidad = PROFESIONALES.map(p => {
+      // Disponible hoy si el dia actual está en sus días de trabajo y aún no son las 17:00 (última cita)
+      const disponibleHoy = p.diasTrabajo.includes(diaActual) && horaActual < 17;
+      return { ...p, disponibleHoy };
+    });
+
     return NextResponse.json({
       sucursales: SUCURSALES,
-      profesionales: PROFESIONALES
+      profesionales: profesionalesConDisponibilidad
     });
   }
 
@@ -47,8 +58,8 @@ export async function GET(request) {
     const fecha = new Date(hoy);
     fecha.setDate(hoy.getDate() + i);
 
-    // Saltamos fines de semana para hacerlo realista
-    if (fecha.getDay() === 0 || fecha.getDay() === 6) {
+    // Saltamos fines de semana y días que el médico no trabaja
+    if (fecha.getDay() === 0 || fecha.getDay() === 6 || !profesional.diasTrabajo.includes(fecha.getDay())) {
       continue;
     }
 

@@ -25,6 +25,9 @@ export default function ReservaPage() {
   
   // Filtro de especialidad
   const [selectedEspecialidad, setSelectedEspecialidad] = useState('Todas');
+  
+  // Filtro Disponibles Hoy
+  const [showOnlyToday, setShowOnlyToday] = useState(false);
 
   // Formulario, validaciones e interacciones
   const [rutVal, setRutVal] = useState('');
@@ -182,6 +185,7 @@ export default function ReservaPage() {
     setTelefonoStatus('idle');
     setTimeFilter('all');
     setSelectedEspecialidad('Todas');
+    setShowOnlyToday(false);
   };
 
   // Filtrado de horas
@@ -228,9 +232,18 @@ export default function ReservaPage() {
               <p>Elige el médico con el que deseas agendar tu consulta.</p>
             </div>
             
-            {/* Filtro de Especialidades Premium */}
+            {/* Controles de Filtrado */}
             {profesionales.length > 0 && (
-              <div className={styles.filtersWrapper}>
+              <div className={styles.filtersSection}>
+                <div className={styles.toggleContainer}>
+                  <label className={styles.switch}>
+                    <input type="checkbox" checked={showOnlyToday} onChange={(e) => setShowOnlyToday(e.target.checked)} />
+                    <span className={styles.slider}></span>
+                  </label>
+                  <span className={styles.toggleLabel}>⚡ Disponibles Hoy</span>
+                </div>
+
+                <div className={styles.filtersWrapper}>
                 <div className={styles.filtersScroll}>
                   {['Todas', ...new Set(profesionales.map(p => p.especialidad))].map(esp => {
                     const icon = esp === 'Cardiología' ? '❤️' :
@@ -254,11 +267,13 @@ export default function ReservaPage() {
                   })}
                 </div>
               </div>
+              </div>
             )}
             
             <div className={styles.doctorGrid}>
               {profesionales
                 .filter(prof => selectedEspecialidad === 'Todas' || prof.especialidad === selectedEspecialidad)
+                .filter(prof => !showOnlyToday || prof.disponibleHoy)
                 .map((prof) => {
                 const suc = sucursales.find(s => s.id === prof.sucursalId);
                 return (
@@ -272,6 +287,13 @@ export default function ReservaPage() {
                     <div className={styles.doctorInfo}>
                       <h3>{prof.nombre}</h3>
                       <span className={styles.badge}>{prof.especialidad}</span>
+                      
+                      {prof.disponibleHoy && (
+                        <div className={styles.todayBadge}>
+                          <span className={styles.pulseDot}></span> Disponible Hoy
+                        </div>
+                      )}
+                      
                       <p className={styles.doctorBio}>{prof.bio}</p>
                       
                       <div className={styles.divider}></div>
