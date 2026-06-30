@@ -1,0 +1,219 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.hero {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(var(--primary-rgb), 0.2);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+.accentText {
+  color: var(--primary);
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--foreground-muted);
+  line-height: 1.6;
+}
+
+/* Doctors */
+.doctorsSection {
+  width: 100%;
+}
+
+.doctorsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.doctorCard {
+  padding: 32px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform 0.3s ease;
+}
+
+.doctorCard:hover {
+  transform: translateY(-4px);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatarLarge {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarLarge svg {
+  width: 32px;
+  height: 32px;
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.doctorName {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.badge {
+  display: inline-block;
+  width: fit-content;
+  padding: 3px 10px;
+  background: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary);
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ratingBadge {
+  font-size: 14px;
+  color: var(--foreground-muted);
+  font-weight: 500;
+}
+
+.star {
+  color: #fbbf24;
+}
+
+.doctorBio {
+  font-size: 15px;
+  color: var(--foreground-muted);
+  line-height: 1.6;
+}
+
+.detailsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 1px solid var(--card-border);
+  padding-top: 16px;
+}
+
+.detailItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.detailIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.detailLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detailValue {
+  display: block;
+  font-size: 14px;
+  color: var(--foreground-muted);
+  line-height: 1.4;
+}
+
+.reserveBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 24px;
+  background-color: var(--primary);
+  color: var(--background);
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  margin-top: 4px;
+}
+
+.reserveBtn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.reserveBtn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .doctorsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cardTop {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}

@@ -72,6 +72,32 @@ export default function ReservaPage() {
     loadInitialData();
   }, []);
 
+  // Leer parámetros de URL para auto-selección
+  useEffect(() => {
+    if (typeof window !== 'undefined' && profesionales.length > 0 && sucursales.length > 0) {
+      const params = new URLSearchParams(window.location.search);
+      const queryEspecialidad = params.get('especialidad');
+      const queryProfesionalId = params.get('profesionalId');
+
+      if (queryEspecialidad && !queryProfesionalId) {
+        setSelectedEspecialidad(queryEspecialidad);
+      }
+
+      // Si viene el ID del doctor, auto-seleccionarlo y pasar al paso 2
+      if (queryProfesionalId && !selectedProfesional) {
+        const profId = parseInt(queryProfesionalId, 10);
+        const prof = profesionales.find(p => p.id === profId);
+        if (prof) {
+          const suc = sucursales.find(s => s.id === prof.sucursalId);
+          setSelectedEspecialidad(prof.especialidad);
+          setSelectedProfesional(prof);
+          setSelectedSucursal(suc);
+          setStep(2);
+        }
+      }
+    }
+  }, [profesionales, sucursales, selectedProfesional]);
+
   // Cargar agenda cuando cambia médico o sucursal
   useEffect(() => {
     if (selectedSucursal && selectedProfesional) {

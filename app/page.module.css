@@ -235,16 +235,10 @@
   color: var(--foreground-muted);
 }
 
-/* Features Section */
-.features {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
+/* Header general para secciones */
 .sectionHeader {
   text-align: center;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -253,13 +247,23 @@
 
 .sectionTitle {
   font-size: 36px;
-  font-weight: 700;
+  font-weight: 750;
+  letter-spacing: -0.5px;
 }
 
 .sectionSubtitle {
   font-size: 16px;
   color: var(--foreground-muted);
   line-height: 1.6;
+}
+
+
+
+/* Features Section (Why Choose Us) */
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .grid {
@@ -306,6 +310,251 @@
   font-size: 15px;
   color: var(--foreground-muted);
   line-height: 1.6;
+}
+
+/* Insurances (Convenios) Section */
+.insurancesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.insurancesGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 16px;
+}
+
+.insuranceCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  border-radius: 16px;
+  text-align: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.insuranceCard:hover {
+  transform: scale(1.05);
+  border-color: rgba(var(--primary-rgb), 0.2);
+}
+
+.insuranceBadge {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--primary);
+}
+
+.insuranceName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/* Testimonials Section */
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonialCard {
+  padding: 32px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid var(--card-border);
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  color: #fbbf24;
+}
+
+.starIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.testimonialText {
+  font-size: 15px;
+  color: var(--foreground);
+  line-height: 1.6;
+  font-style: italic;
+  flex-grow: 1;
+}
+
+.testimonialUser {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--card-border);
+  padding-top: 16px;
+}
+
+.testimonialAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.testimonialName {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.testimonialSpecialty {
+  font-size: 12px;
+  color: var(--foreground-muted);
+}
+
+/* FAQ Section */
+.faqSection {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Ubicación Section */
+.locationSection {
+  width: 100%;
+}
+
+.locationCard {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.locationInfo {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.locationTag {
+  padding: 4px 12px;
+  background: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary);
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.locationTitle {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.locationDesc {
+  font-size: 16px;
+  color: var(--foreground-muted);
+  line-height: 1.6;
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.detailItem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.detailIcon {
+  width: 24px;
+  height: 24px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.detailItem h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.detailItem p {
+  font-size: 14px;
+  color: var(--foreground-muted);
+  line-height: 1.4;
+}
+
+.locationCtas {
+  margin-top: 16px;
+}
+
+.mapButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--primary);
+  color: var(--background);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.mapButton:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.mapButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.mapVisual {
+  display: flex;
+  align-items: stretch;
+  border-left: 1px solid var(--card-border);
+  position: relative;
+  min-height: 350px;
+}
+
+.mapIframe {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  border: none;
+  border-radius: 0 24px 24px 0;
+  filter: saturate(0.85) contrast(1.1);
+  transition: filter 0.3s ease;
+}
+
+.mapIframe:hover {
+  filter: saturate(1) contrast(1);
 }
 
 /* Banner Section */
@@ -358,6 +607,7 @@
   box-shadow: 0 6px 24px rgba(var(--primary-rgb), 0.35);
 }
 
+/* Responsividad */
 @media (max-width: 968px) {
   .hero {
     grid-template-columns: 1fr;
@@ -382,14 +632,42 @@
     border-right: none;
   }
   
-  .grid {
+  .specialtiesGrid, .grid, .testimonialsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .insurancesGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .locationCard {
     grid-template-columns: 1fr;
+  }
+  
+  .mapVisual {
+    border-left: none;
+    border-top: 1px solid var(--card-border);
+    min-height: 300px;
+  }
+
+  .mapIframe {
+    border-radius: 0 0 24px 24px;
   }
   
   .bannerCard {
     flex-direction: column;
     text-align: center;
     padding: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .specialtiesGrid, .grid, .testimonialsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .insurancesGrid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -415,5 +693,13 @@
   .primaryCta, .secondaryCta {
     justify-content: center;
     width: 100%;
+  }
+  
+  .insurancesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .locationInfo {
+    padding: 24px;
   }
 }

@@ -3,6 +3,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/ThemeContext';
 import { Analytics } from "@vercel/analytics/next";
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -20,10 +21,12 @@ export default function RootLayout({ children }) {
     <html lang="es" className={outfit.className} style={{ colorScheme: 'dark light' }}>
       <body>
         <ThemeProvider>
+          <a href="#main-content" className="skip-link">Saltar al contenido principal</a>
           <Navbar />
-          <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+          <main id="main-content" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
             {children}
           </main>
+          <Footer />
         </ThemeProvider>
         <Analytics />
       </body>
