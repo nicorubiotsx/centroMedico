@@ -79,11 +79,12 @@ export async function POST(request) {
         `
       };
 
-      // Disparamos el correo sin hacer await para no retrasar la respuesta al frontend
-      transporter.sendMail(mailOptions).catch(err => console.error("Error enviando email:", err));
+      // En Vercel (Serverless), DEBEMOS hacer await. Si no lo hacemos, 
+      // Vercel "apaga" la función al retornar la respuesta y el correo nunca sale.
+      await transporter.sendMail(mailOptions);
       
     } catch (emailError) {
-      console.error("Error configurando nodemailer:", emailError);
+      console.error("Error enviando email:", emailError);
     }
 
     return NextResponse.json({
