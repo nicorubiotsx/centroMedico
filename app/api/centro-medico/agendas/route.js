@@ -2,17 +2,17 @@ import { NextResponse } from 'next/server';
 
 // Datos estáticos simulando la base de datos
 const SUCURSALES = [
-  { id: 1, nombre: 'Sucursal Providencia', direccion: 'Av. Providencia 1240, Oficina 402' },
-  { id: 2, nombre: 'Sucursal Las Condes', direccion: 'Av. Apoquindo 4500, Piso 10' }
+  { id: 1, nombre: 'Sucursal Las Cabras ', direccion: 'Av. Providencia 1240, Oficina 402' },
+
 ];
 
 const PROFESIONALES = [
   { id: 101, nombre: 'Dr. Alejandro Silva', especialidad: 'Cardiología', sucursalId: 1, rating: 4.9, imagen: '/images/doctor-silva.jpg' },
-  { id: 102, nombre: 'Dra. Beatriz Fuentes', especialidad: 'Pediatría', sucursalId: 2, rating: 4.8, imagen: '/images/doctor-fuentes.jpg' },
+  { id: 102, nombre: 'Dra. Beatriz Fuentes', especialidad: 'Pediatría', sucursalId: 1, rating: 4.8, imagen: '/images/doctor-fuentes.jpg' },
   { id: 103, nombre: 'Dr. Carlos Mendoza', especialidad: 'Medicina General', sucursalId: 1, rating: 4.7, imagen: '/images/doctor-mendoza.jpg' },
-  { id: 104, nombre: 'Dr. Roberto Díaz', especialidad: 'Traumatología', sucursalId: 2, rating: 4.9, imagen: '/images/doctor-diaz.jpg' },
+  { id: 104, nombre: 'Dr. Roberto Díaz', especialidad: 'Traumatología', sucursalId: 1, rating: 4.9, imagen: '/images/doctor-diaz.jpg' },
   { id: 105, nombre: 'Dra. Sofía Vergara', especialidad: 'Dermatología', sucursalId: 1, rating: 5.0, imagen: '/images/doctor-vergara.jpg' },
-  { id: 106, nombre: 'Dra. Camila Soto', especialidad: 'Ginecología', sucursalId: 2, rating: 4.8, imagen: '/images/doctor-soto.jpg' },
+  { id: 106, nombre: 'Dra. Camila Soto', especialidad: 'Ginecología', sucursalId: 1, rating: 4.8, imagen: '/images/doctor-soto.jpg' },
   { id: 107, nombre: 'Dr. Martín López', especialidad: 'Odontología', sucursalId: 1, rating: 4.6, imagen: '/images/doctor-lopez.jpg' }
 ];
 
